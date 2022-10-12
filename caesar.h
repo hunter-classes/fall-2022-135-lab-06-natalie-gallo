@@ -3,4 +3,4 @@
 //add prototypes here
 
 char shiftChar(char c, int rshift);
-string encryptCaesar(string plaintext, int rshift);
+std::string encryptCaesar(std::string plaintext, int rshift);

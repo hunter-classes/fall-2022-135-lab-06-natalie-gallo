@@ -53,10 +53,18 @@ char shiftCharNeg(char c, int rshift){
   int loop = rshift - 1;
   if (dec_c >= 65 && dec_c <= 65 - loop){ //loop through capitals
     rshift = rshift - (65 - dec_c);
-    c_shift = 91 + rshift;
+    if (rshift == 0){
+      c_shift = 0;
+    } else {
+      c_shift = 91 + rshift;
+    }
   } else if (dec_c >= 97 && dec_c <= 97 - loop) { //loop through lowercase
     rshift = rshift - (97 - dec_c);
-    c_shift = 123 + rshift;
+    if (rshift == 0){
+      c_shift = 97;
+    } else {
+      c_shift = 123 + rshift;
+    }
   } else if ((dec_c < 65) || (dec_c > 90 && dec_c < 97) || (dec_c > 122)){
     c_shift = dec_c;
   } else {

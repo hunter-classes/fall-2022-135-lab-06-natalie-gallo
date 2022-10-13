@@ -21,7 +21,7 @@ std::string decryptVigenere(std::string ciphertext, std::string keyword){
       message = message + c;
       counter = counter + 1;
     } else { //if c is a letter, shift the character accordingly, move to the next character of the text and keyword
-      message = message + shiftChar(c, shift);
+      message = message + shiftCharNeg(c, shift);
       counter = counter + 1;
       i = i + 1;
     }
@@ -39,7 +39,7 @@ std::string decryptCaesar(std::string ciphertext, int rshift){
   rshift = -rshift;
   for (int i = 0; i < ciphertext.length(); i++){
     c = ciphertext[i]; //store character into char c
-    message = message + shiftChar(c, rshift);
+    message = message + shiftCharNeg(c, rshift);
     //have a variable called message to store encrypted letters
     //do c plus whatever number character shift (refer to lab)
     //add that (not replace) to encrypted message variable
@@ -47,7 +47,7 @@ std::string decryptCaesar(std::string ciphertext, int rshift){
   return message;
 }
 
-char shiftChar(char c, int rshift){
+char shiftCharNeg(char c, int rshift){
   int c_shift = 0;
   int dec_c = int(c);
   int loop = rshift - 1;

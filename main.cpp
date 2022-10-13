@@ -17,7 +17,7 @@ int main()
   std::cout << "Ciphertext: " << result << std::endl;
 
   //task d
-  std::string result = decryptCaesar("Rovvy, Gybvn!", 10);
+  result = decryptCaesar("Rovvy, Gybvn!", 10);
   std::cout << "Decrypted: " << result << std::endl;
   result = decryptVigenere("Jevpq, Wyvnd!", "cake");
   std::cout << "Decrypted: " << result << std::endl;

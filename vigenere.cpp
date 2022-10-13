@@ -37,22 +37,3 @@ std::string encryptVigenere(std::string plaintext, std::string keyword){
   }
   return message;  
 }
-
-//shiftChar unchanged!
-char shiftChar(char c, int rshift){
-  int c_shift = 0;
-  int dec_c = int(c);
-  int loop = rshift - 1;
-  if (dec_c <= 90 && dec_c >= 90 - loop){ //loop through capitals
-    rshift = rshift - (90 - dec_c);
-    c_shift = 64 + rshift;
-  } else if (dec_c <= 122 && dec_c >= 122 - loop) { //loop through lowercase
-    rshift = rshift - (122 - dec_c);
-    c_shift = 96 + rshift;
-  } else if ((dec_c < 65) || (dec_c > 90 && dec_c < 97) || (dec_c > 122)){
-    c_shift = dec_c;
-  } else {
-    c_shift = dec_c + rshift;
-  }
-  return (char)c_shift;
-}

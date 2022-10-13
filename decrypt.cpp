@@ -4,21 +4,6 @@
 #include "decrypt.h"
 
 //decrypt functions
-
-std::string decryptCaesar(std::string ciphertext, int rshift){
-  char c;
-  std::string message;
-  for (int i = 0; i < ciphertext.length(); i++){
-    c = ciphertext[i]; //store character into char c
-    rshift = -rshift;
-    message = message + shiftChar(c, rshift);
-    //have a variable called message to store encrypted letters
-    //do c plus whatever number character shift (refer to lab)
-    //add that (not replace) to encrypted message variable
-  }
-  return message;
-}
-
 std::string decryptVigenere(std::string ciphertext, std::string keyword){
   char key_c;
   int shift;
@@ -47,16 +32,31 @@ std::string decryptVigenere(std::string ciphertext, std::string keyword){
   return message;
 }
 
+//DECRYPT CAESAR DEBUGGED
+std::string decryptCaesar(std::string ciphertext, int rshift){
+  char c;
+  std::string message;
+  rshift = -rshift;
+  for (int i = 0; i < ciphertext.length(); i++){
+    c = ciphertext[i]; //store character into char c
+    message = message + shiftChar(c, rshift);
+    //have a variable called message to store encrypted letters
+    //do c plus whatever number character shift (refer to lab)
+    //add that (not replace) to encrypted message variable
+  }
+  return message;
+}
+
 char shiftChar(char c, int rshift){
   int c_shift = 0;
   int dec_c = int(c);
   int loop = rshift - 1;
-  if (dec_c <= 90 && dec_c >= 90 - loop){ //loop through capitals
-    rshift = rshift - (90 - dec_c);
-    c_shift = 64 + rshift;
-  } else if (dec_c <= 122 && dec_c >= 122 - loop) { //loop through lowercase
-    rshift = rshift - (122 - dec_c);
-    c_shift = 96 + rshift;
+  if (dec_c >= 65 && dec_c <= 65 - loop){ //loop through capitals
+    rshift = rshift - (65 - dec_c);
+    c_shift = 91 + rshift;
+  } else if (dec_c >= 97 && dec_c <= 97 - loop) { //loop through lowercase
+    rshift = rshift - (97 - dec_c);
+    c_shift = 123 + rshift;
   } else if ((dec_c < 65) || (dec_c > 90 && dec_c < 97) || (dec_c > 122)){
     c_shift = dec_c;
   } else {

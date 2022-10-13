@@ -15,14 +15,20 @@ std::string encryptVigenere(std::string plaintext, std::string keyword){
   int shift;
   char c;
   std::string message;
-  int counter = plaintext.length();
+  int counter = 0;
+  bool read = true;
+
+  while (read){
   for (int i = 0; i < keyword.length(); i++){
-    key_c = keyword[i];
-    shift = (int)key_c - 97;
-    for (int j = 0; j < plaintext.length(); j++){
-      c = plaintext[j];
+    if (counter == plaintext.length()){
+      read = false;
+    } else {
+      key_c = keyword[i];
+      shift = (int)key_c - 97;
+    }
+      c = plaintext[counter];
       message = message + shiftChar(c, shift);
-      counter = counter - 1;
+      counter = counter + 1;
     }
   }
   return message;  
